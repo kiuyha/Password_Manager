@@ -1,1 +1,9 @@
 # Password_Manager
+This Password manager use encryption, compression etc to works.
+First, when it starts, it'll ask password. If the user uses for the first time, it will ask password for the manager (or it will create random password using secrets module).
+Then, program will create a dataframe with the columns (platform,username,pass) using pandas module. After that, a buffer created using IO module. The dataframe then convert to .csv and store in the buffer (rather the disk, ram is using for prevent a malware to read when in the disk and for cleanness). Then the .csv file is encrypted using cryptography module. The key for decrypt and the encrypt file then store in .7z file with the first asked password using py7zr module.
+Program now can read the .7z file. It reading with the SevenZipFile. But it return a dict so it need to separate between the password and the key. ".read()" using because the reading data is IO_Bytes so we convert it to Bytes. Then we decrypt the file using the key.
+This program will ask the user to choose 4 choice (add,access,remove and exit). Adding works by ask the user for platform and username. Then it will combine to the old data and the new using ".concat". Finally the global data will change. The program also will give the end of the dataframe so the user can see the new updated data.
+Access works by ask for what user want to search. It will show the result dataframe. Then it'll ask the index that you want and program can copy the password to your clipboard using pyperclip module.
+remove works similar with access, it will asked for the index you want to delete. It also support multiple index by combine input to list. It use ".drop()".
+After all of that, the program will overwrite the .7z file using the same principal when create new password manager. So, the key will change after it get overwrite make it more secure (I think).
