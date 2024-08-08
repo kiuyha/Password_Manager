@@ -32,6 +32,6 @@ This Password Manager uses encryption, compression, and other techniques to secu
      3. **Remove**: **Remove a Password**: Similar to accessing passwords, but instead of copying, you can select and delete entries by their index. Multiple indexes can be deleted at once by inputting a list. The program uses `.drop()` to remove the selected rows.
      4. 4. **Exit the Program**:After any changes (addition, access, or removal), the program will overwrite the existing `.7z` file, using the same principles as when creating a new password manager. The encryption key changes each time the file is overwritten, enhancing security.
 
-6. ** Security Features**
+6. **Security Features**
    - The use of in-memory operations (RAM) ensures that sensitive data isn't exposed on disk.
    - Each time the data is modified and saved, a new encryption key is generated, making the data more secure against repeated attacks.
