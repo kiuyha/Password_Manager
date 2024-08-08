@@ -29,4 +29,9 @@ This Password Manager uses encryption, compression, and other techniques to secu
    - The program provides four options:
      1. **Add**: Allows you to add a new password. You will be prompted for the platform and username. The new data is combined with the existing data using `.concat`, and the updated DataFrame is displayed.
      2. **Access**: Allows you to search for a specific platform and displays the corresponding passwords. You can select an index to copy the password to your clipboard.
-     3. **Remove**: Allows you to remove a password by specifying its index. Multiple
+     3. **Remove**: **Remove a Password**: Similar to accessing passwords, but instead of copying, you can select and delete entries by their index. Multiple indexes can be deleted at once by inputting a list. The program uses `.drop()` to remove the selected rows.
+     4. 4. **Exit the Program**:After any changes (addition, access, or removal), the program will overwrite the existing `.7z` file, using the same principles as when creating a new password manager. The encryption key changes each time the file is overwritten, enhancing security.
+
+6. ** Security Features**
+   - The use of in-memory operations (RAM) ensures that sensitive data isn't exposed on disk.
+   - Each time the data is modified and saved, a new encryption key is generated, making the data more secure against repeated attacks.
