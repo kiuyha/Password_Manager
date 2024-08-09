@@ -253,9 +253,9 @@ class Choice:
             file_path = input(r'Please enter the path of your file: ').replace('"',"").replace("'","")
             _, extension = os.path.splitext(file_path)
             if extension == '.csv':
-                file_df = pd.read_csv(file_path)
+                file_df = pd.read_csv(file_path,header=None)
             elif extension == '.xlsx' or extension == '.xls':
-                file_df = pd.read_excel(file_path)
+                file_df = pd.read_excel(file_path,header=None)
             else:
                 print('Sorry the file is not supported. Only support .csv, .xlsx and .xls')
                 clean_screen(1)
@@ -266,6 +266,13 @@ class Choice:
             print('The file was not found. Please check the file path and try again.')
             clean_screen(1)
             return self.add_File()
+        desired_columns = ['platform', 'Username', 'pass']
+        for df_col in range(0,len(file_df.columns)-1):
+            for col in desired_columns:
+                result = file_df[file_df[df_col].str.contains(col, case=False, na=False)]
+                result_list = result.index.tolist()
+                file_df.drop(result_list,axis='index',inplace=True)
+        file_df.columns = desired_columns
         data = file_df
     
     def delete_manager(self):
